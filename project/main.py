@@ -13,3 +13,8 @@ def index():
 @login_required
 def profile():
     return render_template('profile.html', name=current_user.name)
+
+@main.route('/checkout')
+@login_required
+def checkout():
+    return render_template('checkout.html', name=current_user.name)
