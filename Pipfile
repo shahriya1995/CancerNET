@@ -9,6 +9,14 @@ flask-sqlalchemy = "*"
 flask-login = "*"
 python-dotenv = "*"
 gunicorn = "*"
+gevent = "*"
+tensorflow = "==1.14.0"
+requests = "*"
+keras = "*"
+pillow = "*"
+python-opencv = "*"
+opencv-python = "*"
+imutils = "*"
 
 [dev-packages]
 
