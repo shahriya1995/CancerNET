@@ -16,6 +16,7 @@ keras = "*"
 pillow = "*"
 imutils = "*"
 greenlet = "*"
+opencv-python-headless = "*"
 
 [dev-packages]
 
