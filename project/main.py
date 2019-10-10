@@ -1,6 +1,6 @@
 # main.py
 
-from flask import Blueprint, render_template ,request
+from flask import Blueprint, render_template, redirect, url_for, request, flash
 from flask_login import login_required, current_user
 from werkzeug.utils import secure_filename
 from gevent.pywsgi import WSGIServer
@@ -24,6 +24,7 @@ import pickle
 from imutils import paths
 from keras.preprocessing.image import ImageDataGenerator
 import numpy as np
+import stripe
 
 
 
@@ -59,21 +60,36 @@ VAL_SPLIT = 0.1
 # model = ResNet50(weights='imagenet')
 # print('Model loaded. Check http://127.0.0.1:5000/')
 
+## create stripe pubkey and secret key:
+
+pub_key = 'pk_test_xi2VacvK6q9M2157PIarZVhq009ZCFJgb0'
+secret_key ='sk_test_tRp2wh6HjpKumodDlQyw6KYJ00eG052xPY'
+
+stripe.api_key = secret_key
+
 @main.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html',pub_key=pub_key)
 
 
-# @main.route('/profile')
-# @login_required
-# def profile():
+@main.route('/thanks')
+def thanks():
+    return render_template('profile.html',name=current_user.name)
 
-#     return render_template('profile.html', name=current_user.name)
-
-@main.route('/checkout')
+@main.route('/pay',methods=['POST'])
 @login_required
-def checkout():
-    return render_template('checkout.html', name=current_user.name)
+def pay():
+    
+    customer = stripe.Customer.create(email=request.form['stripeEmail'], source=request.form['stripeToken'])
+
+    charge = stripe.Charge.create(
+        customer=customer.id,
+        amount=100,
+        currency='usd',
+        description='The Product'
+    )
+
+    return redirect(url_for('main.profile'))
 
 
 def model_predict():

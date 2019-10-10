@@ -17,6 +17,7 @@ pillow = "*"
 imutils = "*"
 greenlet = "*"
 opencv-python-headless = "*"
+stripe = "*"
 
 [dev-packages]
 
