@@ -1,4 +1,4 @@
-## CancerNET - Breast Cancer Detection Web Application with payment integration
+## CancerNET - Breast Cancer Detection Web Application With Payment Integration
 
 
 #### Motivation : 
