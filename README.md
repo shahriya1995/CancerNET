@@ -23,9 +23,16 @@ Breast cancer is the most common form of cancer in women, and invasive ductal ca
 	Use testimages to demo the application
 	
 #### Demo
+<img src ="DemoImages/1st.png"/>
+<img src ="DemoImages/2nd.png"/>
+<img src ="DemoImages/3rd.png"/>	
+<img src ="DemoImages/4th.png"/>
+
+### Contributions:
+#### <a href="https://github.com/AnandMasurkar"> Anand Masurkar</a>
+#### <a href="https://github.com/shahriya1995"> Riya Shah</a>
 
 
-	
 
 
 
