@@ -17,7 +17,7 @@ Breast cancer is the most common form of cancer in women, and invasive ductal ca
 * Upload image and Click to predict
 
 #### Configuration Steps:
-	git clone https://github.com/shahriya1995/HealthCare_Flask_Heroku.git
+	git clone https://github.com/shahriya1995/CancerNET.git
 	pipenv shell
 	flask run
 	Use testimages to demo the application
