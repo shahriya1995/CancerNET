@@ -27,9 +27,6 @@ import numpy as np
 import stripe
 
 
-
-
-
 main = Blueprint('main', __name__)
 
 
@@ -52,13 +49,6 @@ TRAIN_SPLIT = 0.8
 # the amount of validation data will be a percentage of the
 # *training* data
 VAL_SPLIT = 0.1
-
-# MODEL_PATH ='models/your_model.h5'
-# from keras.applications.resnet50 import ResNet50
-
-
-# model = ResNet50(weights='imagenet')
-# print('Model loaded. Check http://127.0.0.1:5000/')
 
 ## create stripe pubkey and secret key:
 
@@ -84,7 +74,7 @@ def pay():
 
     charge = stripe.Charge.create(
         customer=customer.id,
-        amount=100,
+        amount=2000,
         currency='usd',
         description='The Product'
     )
@@ -119,19 +109,9 @@ def model_predict():
     predIdxs = np.argmax(predIdxs, axis=1)
     print(predIdxs)
 
-    # img = image.load_img(img_path, target_size=(224, 224))
+   
 
-    # # Preprocessing the image
-    # x = image.img_to_array(img)
-    # # x = np.true_divide(x, 255)
-    # x = np.expand_dims(x, axis=0)
-
-    # # Be careful how your trained model deals with the input
-    # # otherwise, it won't make correct prediction!
-    # x = preprocess_input(x)
-
-    # preds = model.predict(x)
-    # console.log("Hello")
+    
     return predIdxs
 
 @main.route('/profile', methods=['GET', 'POST'])
@@ -150,11 +130,14 @@ def profile():
         # Make prediction
         result = model_predict()
 
-        # # Process your result for human
-        # # pred_class = preds.argmax(axis=-1)            # Simple argmax
-        # pred_class = decode_predictions(preds, top=1)   # ImageNet Decode
-        # result = str(pred_class[0][0][1])               # Convert to string
-        return str(result)
+
+        result1 = np.where(result==0, 'Negative', result)
+        result2 = np.where(result1=='1', 'Positive', result1)
+
+        print(result2)
+
+
+        return str(result2)
     return render_template('profile.html', name=current_user.name)
 
 

@@ -5,10 +5,15 @@
 <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='main.css')}}">
 <script src="{{url_for('static', filename='main.js')}}"></script>
 
-<h2>Classify Image Using MobileNet and ResNet</h2>
+<div class="jumbotron text-center ">
+<center>
+<h1>Breast Cancer Detection using Artificial Intelligence</h1>
+
+<img src="https://www.pyimagesearch.com/wp-content/uploads/2019/02/breast_cancer_classification_dataset.jpg"></img>
+
 
 <div class="container mt-5">
-        <h2>Image Classifier</h2>
+        <h4>Upload the the image to predict the results</h4>
 
 <div>
     <form id="upload-file" method="post" enctype="multipart/form-data">
@@ -36,5 +41,7 @@
 
 </div>
     </div>
+</center>
+</div>
 
 {% endblock %}
